@@ -13,16 +13,14 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 
-//modelar os atributos e atabela postagens no banco de dados
 @Entity
 @Table(name="tb_postagens")
 public class Postagem {
 
-	@Id //tornar esse atributo uma chave primaria
+	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //para adicionar o id autoincrement
 	private Long id;
 	
-	//essa anotação valida o atributo tendo um valor maximo e minimo de caracteres
 	@Size(min = 5, max = 100, message =  "O título de ter no minimo 10 caracteres e no maximo 100")
 	@NotBlank(message = "Atributo título é obrigatorio")
 	private String titulo;
@@ -31,7 +29,7 @@ public class Postagem {
 	@NotBlank(message = "Atributo título é obrigatorio")
 	private String texto;
 	
-	@UpdateTimestamp // pega a data do sistema ao cadastrar um registro
+	@UpdateTimestamp 
 	private LocalDateTime data;
 
 	public Long getId() {
